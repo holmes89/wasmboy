@@ -6,7 +6,6 @@ import getCoreBundles from './rollup.getcore';
 import debuggerBundles from './rollup.debugger';
 import benchmarkBundles from './rollup.benchmark';
 import ampBundles from './rollup.amp';
-import iframeBundles from './rollup.iframe';
 
 let exports = [];
 
@@ -29,10 +28,6 @@ if (process.env.BENCHMARK) {
 
 if (process.env.AMP) {
   exports = [...exports, ...ampBundles];
-}
-
-if (process.env.IFRAME) {
-  exports = [...exports, ...iframeBundles];
 }
 
 export default exports;
