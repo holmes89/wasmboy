@@ -62,6 +62,7 @@
     "lib:deploy": "run-s core:build lib:build:wasm lib:build:ts lib:deploy:np",
     "lib:deploy:np": "np --no-cleanup",
     "test": "npm run test:accuracy",
+    "test:embed": "node --test test/embed/*.test.js",
     "test:accuracy": "run-s build test:accuracy:nobuild",
     "test:accuracy:nobuild": "node --experimental-worker node_modules/mocha/bin/_mocha test/accuracy/accuracy-test.js --exit",
     "test:perf": "npm run test:performance",

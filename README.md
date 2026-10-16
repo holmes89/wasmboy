@@ -74,6 +74,16 @@ Simply install through npm:
 
 Documentation for the project can be found on the [WasmBoy Wiki](https://github.com/torch2424/wasmBoy/wiki).
 
+### Embedding (fork additions)
+
+This fork (GPL-3.0, like upstream) adds what a host component needs:
+
+- `disableSaves: true` config option: no cartridge RAM load/save and no page-lifecycle auto save states (IndexedDB/localStorage are never touched).
+- `WasmBoy.destroy()`: pauses, detaches the keyboard/gamepad listeners, terminates all workers and clears the loaded game. Safe to call twice; the next `config()`/`loadROM()` starts fresh (mount → unmount → mount).
+- Default keyboard map (via responsive-gamepad): arrows = D-pad, Z = B, X = A, Enter = Start, Shift = Select.
+
+`npm run test:embed` runs a headless lifecycle test against `dist/` (run `npm run build` first).
+
 ### Supported Platforms
 
 Try to test and aim for support on all major browsers (Chrome, Firefox, and Safari). Also, Node support works with the [`headless` option in the WasmBoy config](https://github.com/torch2424/wasmBoy/wiki/Lib-API#wasmboyoptions), and using the [Worker Threads](https://nodejs.org/api/worker_threads.html) `--experimental-worker` flag.
